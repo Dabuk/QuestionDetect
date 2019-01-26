@@ -20,11 +20,12 @@ Sample lines in data - 0's are for questions and 1's for statements
 split the data into training and validation as needed
 
 Training - 
+```Python
 python -u train.py -data ../data/train_punct.txt -bsz 48 -save ../models/model_joint_punct.pt -lr 0.001 -outunk 2 
-
+```
 
 Inference - Create data in the same format as train/valid file and replace the data in validation file with inference data -  This is because vocabulary is created on the fly using train data. I haven't added the vocab store feature yet. 
-
+```Python
 python validate.py -data ../data/train_no_punct.txt -save ../models/model_joint_no_punct.pt -bsz 1 -eval -max 100 -outunk 2
-
+```
 The validate.py creates a predictions file in output folder containing 0 / 1 label for each line in the test file. 1 means question, 0 means statement
